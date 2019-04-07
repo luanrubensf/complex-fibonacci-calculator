@@ -13,3 +13,8 @@ after_success:
   - docker build -t luanrubens/cfc-nginx ./nginx
   - docker build -t luanrubens/cfc-server ./server
   - docker build -t luanrubens/cfc-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push luanrubens/cfc-client
+  - docker push luanrubens/cfc-nginx
+  - docker push luanrubens/cfc-server
+  - docker push luanrubens/cfc-worker
