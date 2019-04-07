@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t luanrubensf/complex-fibonacci-test -f ./client/Dockerfile.dev ./client
+
+script: 
+  - docker run luanrubensf/complex-fibonacci-test npm test -- --coverage
+
+after_success:
+  - docker build -t luanrubens/cfc-client ./client
+  - docker build -t luanrubens/cfc-nginx ./nginx
+  - docker build -t luanrubens/cfc-server ./server
+  - docker build -t luanrubens/cfc-worker ./worker
