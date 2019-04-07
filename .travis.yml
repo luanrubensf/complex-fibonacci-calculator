@@ -9,12 +9,12 @@ script:
   - docker run luanrubensf/complex-fibonacci-test npm test -- --coverage
 
 after_success:
-  - docker build -t luanrubens/cfc-client ./client
-  - docker build -t luanrubens/cfc-nginx ./nginx
-  - docker build -t luanrubens/cfc-server ./server
-  - docker build -t luanrubens/cfc-worker ./worker
+  - docker build -t luanrubensf/cfc-client ./client
+  - docker build -t luanrubensf/cfc-nginx ./nginx
+  - docker build -t luanrubensf/cfc-server ./server
+  - docker build -t luanrubensf/cfc-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push luanrubens/cfc-client
-  - docker push luanrubens/cfc-nginx
-  - docker push luanrubens/cfc-server
-  - docker push luanrubens/cfc-worker
+  - docker push luanrubensf/cfc-client
+  - docker push luanrubensf/cfc-nginx
+  - docker push luanrubensf/cfc-server
+  - docker push luanrubensf/cfc-worker
