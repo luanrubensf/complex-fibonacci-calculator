@@ -18,3 +18,17 @@ after_success:
   - docker push luanrubensf/cfc-nginx
   - docker push luanrubensf/cfc-server
   - docker push luanrubensf/cfc-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: sa-east-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-sa-east-1-246025812221
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+    
